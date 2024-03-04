@@ -13,23 +13,26 @@ import { AuthProvider } from "./components/hoc/AuthProvider"
 
 const App = () => {
   return (<>
-  <AuthProvider>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="posts" element={<BlogPage />} />
-        <Route path="posts/:id" element={<SinglePage />} />
-        <Route path="posts/:id/edit" element={<EditPage />} />
-        <Route path="posts/new" element={
-          <RequireAuth>
-            <CreatePost />
-          </RequireAuth>
-        } />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} >
+            <Route path="contacts" element={<p>Our contacts</p>} />
+            <Route path="team" element={<p>Our team</p>} />
+          </Route>
+          <Route path="posts" element={<BlogPage />} />
+          <Route path="posts/:id" element={<SinglePage />} />
+          <Route path="posts/:id/edit" element={<EditPage />} />
+          <Route path="posts/new" element={
+            <RequireAuth>
+              <CreatePost />
+            </RequireAuth>
+          } />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </AuthProvider>
   </>);
 };
